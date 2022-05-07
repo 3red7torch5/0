@@ -25,11 +25,11 @@ class okoshko(QWidget):
     def connects(self):
         self.bttn.clicked.connect(self.testik)
     def testik(self):
-        #self.h_layout.setParent(None)
+        self.h_layout.setParent(None)
         self.h_layout = QHBoxLayout()
         self.labl = QLabel("a")
         self.h_layout.addWidget(self.labl,alignment=Qt.AlignRight)
-        self.setLayout(h_layout)
+        #self.setLayout(self.h_layout)
 #для потестить
 def qqq():
     print('heheheheh')
