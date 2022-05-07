@@ -1,5 +1,5 @@
 #импорты
-from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout, QPushButton, QLabel, QLineEdit
+from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout, QVBoxLayout, QPushButton, QLabel, QLineEdit
 from PyQt5.QtCore import Qt
 #константы
 WIGHT = 1024
@@ -14,22 +14,23 @@ class okoshko(QWidget):
         self.show()
         self.connects()
     def initUI(self):
-        self.bttn = QPushButton('поройти пробу Руфье')
+        self.bttn = QPushButton('пройти пробу Руфье')
         self.labl = QLabel("Проба Руфье представляет собой нагрузочный комплекс, предназначенный\nдля оценки работоспособности сердца при физической нагрузке")
         self.line = QLineEdit("имя")
+        self.v_layout = QVBoxLayout()
         self.h_layout = QHBoxLayout()
-        self.h_layout.addWidget(self.line,alignment=Qt.AlignCenter)
-        self.h_layout.addWidget(self.bttn,alignment=Qt.AlignCenter)
-        self.h_layout.addWidget(self.labl,alignment=Qt.AlignRight)
-        self.setLayout(self.h_layout)
+        self.h_layout0 = QHBoxLayout()
+        self.h_layout0.addWidget(self.line,alignment=Qt.AlignCenter)
+        self.h_layout0.addWidget(self.bttn,alignment=Qt.AlignCenter)
+        self.h_layout.addWidget(self.labl,alignment=Qt.AlignCenter)
+        self.v_layout.addLayout(self.h_layout)
+        self.v_layout.addLayout(self.h_layout0)
+        self.setLayout(self.v_layout)
     def connects(self):
         self.bttn.clicked.connect(self.testik)
     def testik(self):
-        #self.h_layout.setParent(None)
-        #self.h_layout = QHBoxLayout()
-        self.labl = QLabel("a")
+        self.labl = QLabel("а")
         self.h_layout.addWidget(self.labl,alignment=Qt.AlignRight)
-        #self.setLayout(self.h_layout)
 #для потестить
 def qqq():
     print('heheheheh')
