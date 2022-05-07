@@ -16,20 +16,30 @@ class okoshko(QWidget):
     def initUI(self):
         self.bttn = QPushButton('пройти пробу Руфье')
         self.labl = QLabel("Проба Руфье представляет собой нагрузочный комплекс, предназначенный\nдля оценки работоспособности сердца при физической нагрузке")
-        self.line = QLineEdit("имя")
+        self.line = QLineEdit("ФИО")
+        self.line0 = QLineEdit("возраст")
         self.v_layout = QVBoxLayout()
         self.h_layout = QHBoxLayout()
         self.h_layout0 = QHBoxLayout()
         self.h_layout0.addWidget(self.line,alignment=Qt.AlignCenter)
-        self.h_layout0.addWidget(self.bttn,alignment=Qt.AlignCenter)
-        self.h_layout.addWidget(self.labl,alignment=Qt.AlignCenter)
+        self.h_layout0.addWidget(self.line0,alignment=Qt.AlignCenter)
+        self.h_layout.addWidget(self.bttn,alignment=Qt.AlignCenter)
+        self.h_layout.addWidget(self.labl,alignment=Qt.AlignLeft)
         self.v_layout.addLayout(self.h_layout)
         self.v_layout.addLayout(self.h_layout0)
         self.setLayout(self.v_layout)
     def connects(self):
         self.bttn.clicked.connect(self.testik)
     def testik(self):
-        self.labl = QLabel("а")
+        self.h_layout0.removeWidget(self.labl)
+        self.labl.deleteLater()
+        self.labl = None
+        self.h_layout0.removeWidget(self.line0)
+        self.line0.deleteLater()
+        self.line0 = None
+        self.line1 = QLabel("Полежите 5 минут, замерьте пульс и запишите его")
+        self.line.setText("пульс")
+        self.h_layout0.addWidget(self.line1,alignment=Qt.AlignRight)
         self.h_layout.addWidget(self.labl,alignment=Qt.AlignRight)
 #для потестить
 def qqq():
